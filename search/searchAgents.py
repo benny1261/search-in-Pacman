@@ -301,7 +301,7 @@ class CornersProblem(search.SearchProblem):
         #Visited_Corners = state[1]
 
         return len(state[1]) == 4
-        util.raiseNotDefined()
+        #util.raiseNotDefined()
 
     def getSuccessors(self, state):
         """
@@ -333,6 +333,7 @@ class CornersProblem(search.SearchProblem):
 
         self._expanded += 1
         return successors
+
 
     """
     for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
@@ -379,11 +380,10 @@ def cornersHeuristic(state, problem):
     "*** YOUR CODE HERE ***"
     unvisited_corner = [item for item in corners if item not in state[1]]
     return minmanhattan(unvisited_corner, state[0])
-    # return 0 # Default to trivial solution
 
 
 def minmanhattan(unserched_corner, cur_pos):
-    if len(unserched_corner) == 0:
+    if not unserched_corner:
         return 0
     possibilities = []
     for loc in unserched_corner:
